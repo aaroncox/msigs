@@ -116,9 +116,6 @@ export class WalletPluginMultiSig extends AbstractWalletPlugin implements Wallet
         if (!permission) {
             throw new Error('Requested permission not found')
         }
-        const permissions = permission.required_auth.accounts.map((a) => a.permission)
-        console.log(JSON.stringify(permissions, null, 2))
-        // throw new Error('Multi-signer resolution not implemented')
         return permission.required_auth.accounts.map((a) => a.permission)
     }
 
