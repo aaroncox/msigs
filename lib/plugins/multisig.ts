@@ -18,6 +18,7 @@ import {
 import { Contract as MsigContract } from '$lib/contracts/eosio.msig'
 import { Contract as TimeContract } from '$lib/contracts/time.eosn'
 import { generateRandomName } from '$lib/utils'
+import { systemContract } from '$lib/wharf'
 
 export interface WalletPluginMultiSigOptions {
     walletPlugins: WalletPlugin[]
@@ -91,15 +92,33 @@ export class WalletPluginMultiSig extends AbstractWalletPlugin implements Wallet
         )
     }
 
+    async getBlockProducers(limit = 30): Promise<PermissionLevel[]> {
+        const producers = await systemContract.table('producers').all()
+        return producers
+            .filter((producer) => producer.is_active)
+            .filter((producer) => producer.total_votes.value > 0)
+            .toSorted((a, b) => {
+                return a.total_votes.value > b.total_votes.value ? -1 : 1
+            })
+            .slice(0, limit)
+            .map((p) => PermissionLevel.from({ actor: p.owner, permission: 'active' }))
+    }
+
     async getSigners(
         signer: PermissionLevel,
         context: TransactContext,
     ): Promise<PermissionLevel[]> {
+        if (signer.actor.equals('eosio')) {
+            return this.getBlockProducers()
+        }
         const account = await context.client.v1.chain.get_account(signer.actor)
         const permission = account.permissions.find((p) => p.perm_name.equals(signer.permission))
         if (!permission) {
             throw new Error('Requested permission not found')
         }
+        const permissions = permission.required_auth.accounts.map((a) => a.permission)
+        console.log(JSON.stringify(permissions, null, 2))
+        // throw new Error('Multi-signer resolution not implemented')
         return permission.required_auth.accounts.map((a) => a.permission)
     }
 
