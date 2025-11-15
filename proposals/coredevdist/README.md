@@ -2,6 +2,44 @@
 
 > Vaulta Core Development Team Configuration
 
+## Overview
+
+This proposal seeks to:
+
+1. Unlock a funding mechanism for the core development team
+2. Transfers control of fund.wram to the network authority
+3. Transfers control of eosio.mware to the development team
+
+### 1. Development Team Funding
+
+All of the accounts listed below are owned by the network.
+
+- `eosio.saving` retains its current distribution ratios
+- `dist.vaulta` receives partial distribution and can redistribute
+- `dev.vaulta` claims and allocates to development team accounts
+
+The `dev.vaulta` while being owned by the network is accessible by representatives of the development team. This will start as a 2-of-2 msig permission between Areg and Aaron. Additional signers can be added over time as required.
+
+This configuration can be temporary. At the time of this proposal it is undecided on how this configuration operates long term. This initial configuration is designed to provide a bucket to bootstrap the core development team.
+
+Once the team is established, further review of the configuration can take place.
+
+### 2. The fund.wram account
+
+This is a 2-of-2 msig between the Foundation and Labs in stalemate.
+
+Without a solution on how to use this account, this proposal will simply replace the active permission with `eosio@active`. 
+
+This step is being taken to remove control from the Foundation account, without needing to decide on the fate of the account.
+
+### 3. The eosio.mware account
+
+This is a 2-of-2 msig between the Foundation and Labs in stalemate.
+
+Labs has indicated in discussions it is willing to surrender control of this account to the development team. For that reason, the permissions of this account will be updated to the new `dev.vaulta` account.
+
+If Labs reverses this opinion, this proposal can be modified to simply replace the active permission with `eosio@active` similar to the fund.wram account. 
+
 ### Fund Distribution Flow
 
 ```mermaid
@@ -35,17 +73,19 @@ graph TD
 ### Account Structure
 
 **dev.vaulta** - Development team multi-sig account (2-of-2)
-- ahayrapetian@active (Areg)
-- aaron@active (Aaron)
+- Owned by the network (eosio@active)
+- Accessible by development team representatives 
+    - ahayrapetian@active (Areg)
+    - aaron@active (Aaron)
 
 **dist.vaulta** - Distribution contract account
-- Controlled by network authority
+- Owned by the network (eosio@active)
 - Runs eosio.saving contract
 - Distributes 100% of incoming funds to dev.vaulta
 
 ### MSIG - Development Team Setup
 
-> Note: Accounts `dev.vaulta` and `dist.vaulta` already exist and do not need to be created.
+> Note: Accounts `dev.vaulta` and `dist.vaulta` should already exist and before this proposal is made.
 
 #### Deploy Distribution Contract
 
