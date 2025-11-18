@@ -96,25 +96,12 @@ const actions: Action[] = [
             authorization: [{ actor: 'fund.wram', permission: 'owner' }],
         },
     ),
-    // 6. Update eosio.mware active permission, replace active permission with dev.vaulta account
+    // 6. Update eosio.mware active permission, replace active permission with eosio@active
     systemContract.action(
         'updateauth',
         {
             account: 'eosio.mware',
-            auth: {
-                threshold: 1,
-                keys: [],
-                accounts: [
-                    {
-                        weight: 1,
-                        permission: {
-                            actor: DEV_ACCOUNT,
-                            permission: 'active',
-                        },
-                    },
-                ],
-                waits: [],
-            },
+            auth: NETWORK_AUTHORITY,
             permission: 'active',
             parent: 'owner',
         },
