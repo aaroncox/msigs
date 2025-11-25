@@ -92,6 +92,23 @@ bun run proposals/<proposal-name>
 
 This will create and submit a multisig proposal to Vaulta, which can then be reviewed and approved by the appropriate signers.
 
+## Document Hashing
+
+Calculate SHA-256 hashes of documentation files for on-chain proposal references:
+
+```bash
+./scripts/hash-docs.sh                   # Hash all markdown files in subfolders
+./scripts/hash-docs.sh documents/*.md    # Hash specific files
+```
+
+Output format:
+```
+documents/stage-1.md
+fe708b714a4fb976b2f291269f18bed17427f0121da62c6ad1c71583d47de157
+```
+
+Document hashes can be included in multisig proposals (via token transfer memo) to create a permanent on-chain reference to the approved document version.
+
 ## Contributing
 
 When creating new proposals:

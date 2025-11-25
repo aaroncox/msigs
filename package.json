@@ -8,7 +8,8 @@
         "codegen:eosio": "wharfkit generate -u https://eos.greymass.com -f ./src/contracts/eosio.ts eosio",
         "codegen:eosio.msig": "wharfkit generate -u https://eos.greymass.com -f ./src/contracts/eosio.msig.ts eosio.msig",
         "codegen:eosio.saving": "wharfkit generate -u https://eos.greymass.com -f ./src/contracts/eosio.saving.ts eosio.saving",
-        "codegen:time.eosn": "wharfkit generate -u https://eos.greymass.com -f ./src/contracts/time.eosn.ts time.eosn"
+        "codegen:time.eosn": "wharfkit generate -u https://eos.greymass.com -f ./src/contracts/time.eosn.ts time.eosn",
+        "hash-docs": "./scripts/hash-docs.sh"
     },
     "devDependencies": {
         "@biomejs/biome": "2.3.5",
