@@ -397,7 +397,7 @@ Listed below are the actions to remove the Foundation from these permissions. Se
 
 Links: [Account](https://unicove.com/account/eosio.mware) | [Permissions](https://unicove.com/account/eosio.mware/permissions) | [Balances](https://unicove.com/account/eosio.mware/balances)
 
-This account holds the remaining budget allocated to Middleware. Labs has indicated they would agree with assigning this account to the development team.
+This account holds the remaining budget allocated to Middleware.
 
 Account overview:
 - Owner: eosio@active (owned by the network)
