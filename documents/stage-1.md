@@ -1,4 +1,4 @@
-# Stage 1: Vaulta Foundation Transition (v6)
+# Stage 1: Vaulta Foundation Transition (v7)
 
 > This proposal creates two new legal entities to ensure continuity after the Vaulta Foundation shuts down.
 
@@ -9,8 +9,16 @@
    1. [Vaulta Network Trust (VNT)](#vaulta-network-trust-vnt)  
    2. [Vaulta Development Team (VDT)](#vaulta-development-team-vdt)  
 3. Propose and Approve 2 MSIG Proposals  
-   1. [Proposal 1: Account Creation](#proposal-1-account-creation)  
-   2. [Proposal 2: Contracts and Configuration](#proposal-2-contracts-and-configuration)
+   1. [MSIG 1: Account Creation](#msig-1-account-creation)  
+   2. [MSIG 2: Contracts and Configuration](#msig-2-contracts-and-configuration)
+
+### Changes between v6 and v7
+
+1. Specified VNT as Canadian non-profit with 5-member transition team (4-of-5 consensus)
+2. Transition team acts as temporary board, determines minimal staff/services, and selects first board
+3. BPs approve transition team and board selection process by signing MSIG 2
+4. BPs can change the board at any time through network consensus (15/21)
+5. Added VNT Board Powers section with limitations (cannot speak for network, financial assets restricted to maintenance)
 
 ### Changes between v5 and v6
 
@@ -145,7 +153,7 @@ Communication and collaboration with willing Block Producers and leaders of othe
 
 ## Vaulta Network Trust (VNT)
 
-The Vaulta Network Trust (VNT) will be a new independent non-profit organization. It will provide permanent operational functions for the network. It will hold off-chain shared assets.
+The Vaulta Network Trust (VNT) will be a new independent Canadian non-profit organization. It will provide permanent operational functions for the network. It will hold off-chain shared assets.
 
 The Vaulta Network cannot be a legal owner because it is not a legal entity. The VNT will own assets on behalf of the network.
 
@@ -155,19 +163,20 @@ The VNT mission is to ensure continuity of these assets as different organizatio
 
 This msig proposal delegates responsibility to select people. They will form a transition team. The transition team will research and bootstrap this entity on behalf of the network.
 
-The group will work to achieve a sensible structure in terms of cost and governance. The transition team will be disbanded after the VNT is created and an initial board of directors is in place.
+The transition team will consist of 5 members. Decisions require 4 out of 5 members to agree. The team acts as a temporary board during the transition period.
 
-**Note**: The transition team will be defined before Proposal 2. This document v6 is ready for Proposal 1. A future version will add transition team details before Proposal 2.
+The group will work to achieve a sensible structure in terms of cost and governance. The transition team will hand over control to the first board once it is selected.
+
+**Note**: The transition team will be defined before MSIG 2. This document is ready for MSIG 1. A future version will add transition team details before MSIG 2.
 
 ### VNT Transition Team: Immediate Priorities
 
-Network leadership will identify individuals or entities capable of leading the creation of this entity. This will include:
+The transition team's priorities include:
 
-- Research the best region to incorporate and legal structure
-- Identify a sufficient number of board members and recruit them to the future VNT board
-- Present the network leadership with a researched plan for approval using a symbolic msig
+- Research the appropriate Canadian non-profit legal structure
+- Determine minimal necessary staff and services for the VNT
+- Select the first Board of Directors
 - Create the legal entity and coordinate the transfer of assets from the Foundation
-- Reach consensus with [Block Producers](#understanding-network-ownership) on the members of the first Board of Directors
 
 ### VNT Scope
 
@@ -181,18 +190,32 @@ The VNT Transition Team will work with the Vaulta Foundation as it shuts down. T
 
 **Note**: This organization is NOT responsible for network activities like marketing or communications. This organization is exclusively responsible for off-chain asset management.
 
+### VNT Board Powers
+
+The Board of Directors, when consensus is reached, can grant access to non-financial assets to third parties. These assets include:
+
+- Management of social media accounts
+- Domain name management
+- Access to operational services (Github, Google Workspace, etc.)
+- Other non-financial shared resources
+
+**Important limitations**:
+- The board cannot speak for the network
+- The board does not represent the network in public communications
+- Financial assets can only be used for asset maintenance (legal, domains, services, compliance); other purposes require 15 of 21 Block Producers to approve
+
 ### VNT Board of Directors
 
-The organization will be managed by a group of known individuals. These individuals must have a vested interest in securing the network and its assets.
+The transition team will select the first Board of Directors. These individuals must have a vested interest in securing the network and its assets.
 
-The initial VNT leadership will depend on the structure of the entity. The transition team will determine this.
+Block Producers agree to the transition team and their board selection process by signing MSIG 2. This signature represents network consensus on the process.
 
-Ideal candidates for potential board members include:
+Ideal candidates for board members include:
 
 - Representatives of network-funded organizations
 - Block Producers
 
-The board can be changed at any time through [network consensus](#understanding-network-ownership). The transition team will explore enforcement options. This may be through the organization's bylaws or through board member agreements. If possible, this will be implemented.
+The board can be changed at any time by Block Producers through [network consensus](#understanding-network-ownership) (15 of 21 Block Producers must agree). The transition team will explore enforcement options to ensure this can happen smoothly. This may be through the organization's bylaws or through board member agreements.
 
 ### VNT Funding
 
@@ -226,13 +249,13 @@ Two msig proposals must be approved in sequential order to reconfigure the netwo
 
 Additional technical information for each proposal is available using the Github links.
 
-## Proposal 1: Account Creation
+## MSIG 1: Account Creation
 
-The first proposal creates the 2 accounts required for this proposal. This must happen before deploying the smart contract and setting the distribution configuration.
+MSIG 1 creates the 2 accounts required for this proposal. This must happen before deploying the smart contract and setting the distribution configuration.
 
 **Technical Documentation**: [../proposals/dev.accounts/](../proposals/dev.accounts/)
 
-**Proposal**
+**MSIG Status**
 
 - Status: https://unicove.com/msig/aaron/fwmpntxlmfhz
 - Actions: https://unicove.com/msig/aaron/fwmpntxlmfhz/actions
@@ -266,13 +289,13 @@ This is a secondary distribution contract [owned by the network](#understanding-
 
 This contract can claim tokens upstream from the eosio.saving account. Those tokens are then distributed based on this contract's configuration. See [eosio.saving config](#eosiosaving-config) for additional details.
 
-## Proposal 2: Contracts and Configuration
+## MSIG 2: Contracts and Configuration
 
-The second proposal configures the distribution contracts and resolves outstanding issues with Vaulta Foundation accounts.
+MSIG 2 configures the distribution contracts and resolves outstanding issues with Vaulta Foundation accounts.
 
 **Technical Documentation**: [../proposals/coredevdist/](../proposals/coredevdist/)
 
-**Proposal**
+**MSIG Status**
 
 - Not available yet
 
@@ -282,7 +305,7 @@ The second proposal configures the distribution contracts and resolves outstandi
 
 ### Messaging
 
-Proposal 2 will include a permanent on-chain reference to this document. This creates a verifiable record that Block Producers approved this specific plan.
+MSIG 2 will include a permanent on-chain reference to this document. This creates a verifiable record that Block Producers approved this specific plan.
 
 The reference is either a document hash or version link. It is stored in a token transfer memo field. This makes the agreement permanent and auditable on the blockchain.
 
@@ -290,7 +313,7 @@ The reference is either a document hash or version link. It is stored in a token
 
 A smart contract will be set on the dist.vaulta account. This contract is identical to the eosio.saving contract. The hash will be identical, but the configuration will be different.
 
-This proposal will call:
+MSIG 2 will call:
 - eosio::setcode to set the contract code
 - eosio::setabi to set the contract ABI
 
@@ -404,7 +427,7 @@ Account overview:
 - Active: 2-of-2 msig between Foundation and Labs
 - 10 million EOS allocated to Middleware, but not released
 
-This proposal would change the active permission to [network ownership](#understanding-network-ownership).
+MSIG 2 will change the active permission to [network ownership](#understanding-network-ownership).
 
 #### fund.wram
 
@@ -417,4 +440,4 @@ Account overview:
 - Active: 2-of-2 msig between Foundation and Labs
 - Approx 42GB RAM (45,181,397.077 KB) from tokenomics plan
 
-This proposal would change the active permission to [network ownership](#understanding-network-ownership).
+MSIG 2 will change the active permission to [network ownership](#understanding-network-ownership).
